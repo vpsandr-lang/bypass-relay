@@ -7,4 +7,4 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
-        value: "22"
+        value: "20"
