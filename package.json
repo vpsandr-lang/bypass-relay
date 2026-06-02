@@ -1,0 +1,17 @@
+{
+  "name": "virtual-office-manager",
+  "version": "1.0.0",
+  "description": "Виртуальный офис-менеджер для нотариальной конторы с 3D аватаром",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "sql.js": "^1.9.0",
+    "uuid": "^9.0.0",
+    "node-fetch": "^2.7.0"
+  }
+}
