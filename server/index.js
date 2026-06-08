@@ -454,6 +454,7 @@ h1 { color:#4CAF50; font-size:32px; }
 <div class="card">
   <p>📱 <a href="/ios" style="color:#81C784;">iOS настройка</a></p>
   <p>🤖 Android APK готов</p>
+  <p>📥 <a href="/bypassvpn-tabs10.apk" style="color:#81C784;">Скачать APK</a></p></p>
   <p>🪟 Windows .exe готов</p>
 </div>
 <div class="card">
