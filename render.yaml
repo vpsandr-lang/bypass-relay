@@ -1,0 +1,15 @@
+services:
+  - type: web_service
+    name: bypass-relay
+    runtime: node
+    region: oregon
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: AUTH_TOKEN
+        value: freebypass2024
+      - key: USE_ENCRYPTION
+        value: "false"

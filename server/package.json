@@ -1,0 +1,14 @@
+{
+  "name": "bypass-relay-server",
+  "version": "1.0.0",
+  "description": "WebSocket relay server for censorship circumvention",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0",
+    "uuid": "^9.0.0"
+  }
+}
