@@ -77,20 +77,30 @@ const server = http.createServer((req, res) => {
     return;
   }
   
-  // APK download
-  if (url === '/apk' || url === '/download.apk' || url === '/bypassvpn.apk') {
-    const apkPath = path.join(__dirname, 'bypassvpn.apk');
-    if (fs.existsSync(apkPath)) {
+  // APK download - try multiple paths
+  if (url === '/apk' || url.endsWith('.apk')) {
+    const apkName = path.basename(url);
+    const searchPaths = [
+      path.join(__dirname, apkName),
+      path.join(__dirname, '..', apkName),
+      path.join(process.cwd(), apkName),
+      path.join(process.cwd(), 'server', apkName)
+    ];
+    let apkPath = null;
+    for (const p of searchPaths) {
+      if (fs.existsSync(p)) { apkPath = p; break; }
+    }
+    if (apkPath) {
       const stat = fs.statSync(apkPath);
       res.writeHead(200, {
         'Content-Type': 'application/vnd.android.package-archive',
         'Content-Length': stat.size,
-        'Content-Disposition': 'attachment; filename="BypassVPN.apk"'
+        'Content-Disposition': 'attachment; filename="' + apkName + '"'
       });
       fs.createReadStream(apkPath).pipe(res);
     } else {
-      res.writeHead(404);
-      res.end('APK not found');
+      res.writeHead(404, {'Content-Type':'text/plain'});
+      res.end('APK not found - checked: ' + JSON.stringify(searchPaths));
     }
     return;
   }
